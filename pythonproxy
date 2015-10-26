@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+#
+# This file is part of pythonproxy (https://github.com/DRMacIver/hypothesis)
+#
+# Most of this work is copyright (C) 2015 David R. MacIver
+#
+# This Source Code Form is subject to the terms of the Mozilla Public License,
+# v. 2.0. If a copy of the MPL was not distributed with this file, You can
+# obtain one at http://mozilla.org/MPL/2.0/.
+
+set -e
+
+PYTHONVERSION=$1
+
+BASE=$HOME/.cache/pythonproxy
+LOCKFILE="$BASE/.install-lockfile"
+TARGETPYTHON=$BASE/versions/$PYTHONVERSION 
+EXECUTABLE=$TARGETPYTHON/bin/python
+PRINTED=false
+
+if [ ! -e $EXECUTABLE ]; then
+  while true; do
+    LOCKFILE="$BASE/.install-lockfile"
+    if mkdir $LOCKFILE 2>/dev/null; then
+      trap "rmdir $LOCKFILE || true" EXIT
+      break
+    else
+      echo "It looks like another installer is running. Waiting until it finishes"
+    fi
+
+    sleep 1
+
+    if [ ! -d $LOCKFILE ] ; then
+      continue
+    fi
+    NOW=$(date '+%s')
+    FILEAGE=$(stat --format=%X $LOCKFILE)
+    DEADLINE=$((300 + $FILEAGE))
+    if [  $NOW -gt  $DEADLINE ]; then
+      echo "We've waited long enough (5 minutes). Assuming bad lockfile and powering through."
+      rm -rf $LOCKFILE
+    fi
+  done
+  rm -rf $TARGETPYTHON
+
+  PYENV=$BASE/pyenv
+  if [ ! -d "$PYENV/.git" ]; then
+    rm -rf $PYENV
+    git clone https://github.com/yyuu/pyenv.git $BASE/pyenv
+  else
+    back=$PWD
+    cd $PYENV
+    git fetch || echo "Update failed to complete. Ignoring"
+    git reset --hard origin/master
+    cd $back
+  fi
+  $PYENV/plugins/python-build/bin/python-build $PYTHONVERSION $TARGETPYTHON
+  rmdir $LOCKFILE || true
+fi
+
+shift
+
+exec $EXECUTABLE "$@"
