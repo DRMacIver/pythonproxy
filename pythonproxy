@@ -10,6 +10,11 @@
 
 set -e
 
+if [ "$#" -eq 0 ] ; then
+  echo "Usage: $0 <python-version> commands..."
+  exit 1
+fi
+
 PYTHONVERSION=$1
 
 BASE=$HOME/.cache/pythonproxy
