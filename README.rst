@@ -43,7 +43,7 @@ that usage pattern up into a single script.
 Should I use it?
 ~~~~~~~~~~~~~~~~
 
-¯\_(ツ)_/¯
+¯\\_(ツ)_/¯
 
 It works for me, but it's not very well tested (some manual testing, no automated tests) and is probably
 about as inappropriate for your workflow as pyenv ended up being for mine.
