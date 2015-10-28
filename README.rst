@@ -62,7 +62,9 @@ installed, but it should otherwise work.
 Why is it called specipy?
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Because `jonty <https://github.com/jonty>`_.
+Because if lets you specify a specific python version.
+
+Also because `jonty <https://github.com/jonty>`_.
 
 What platforms are supported?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
