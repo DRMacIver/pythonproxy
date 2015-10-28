@@ -24,6 +24,7 @@ EXECUTABLE=$TARGETPYTHON/bin/python
 PRINTED=false
 
 if [ ! -e $EXECUTABLE ]; then
+  mkdir -p $BASE
   while true; do
     LOCKFILE="$BASE/.install-lockfile"
     if mkdir $LOCKFILE 2>/dev/null; then
