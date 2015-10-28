@@ -1,8 +1,8 @@
-===========
-pythonproxy
-===========
+=======
+specipy
+=======
 
-pythonproxy runs a given python command against whatever version of python you like.
+specipy runs a given python command against whatever version of python you like.
 
 If that version is not installed, it uses `pyenv <https://github.com/yyuu/pyenv>`_'s installer plugin to first install it and *then* run against
 that python version.
@@ -11,13 +11,13 @@ Usage is:
 
 .. code:: bash
 
-  pythonproxy <exact version> <any sequence of arguments that python version can take>
+  specipy <exact version> <any sequence of arguments that python version can take>
 
 e.g.:
 
 .. code:: bash
 
-  david@laser-shark:~/projects/pythonproxy$ ./pythonproxy 3.5.0
+  david@laser-shark:~/projects/specipy$ ./specipy 3.5.0
   Python 3.5.0 (default, Oct 26 2015, 09:27:25) 
   [GCC 4.9.2] on linux
   Type "help", "copyright", "credits" or "license" for more information.
@@ -56,7 +56,7 @@ How do I use it?
 
 Ideally: Very carefully.
 
-In practice: Just stick pythonproxy on your path somewhere. You'll need to make sure bash and git are both
+In practice: Just stick specipy on your path somewhere. You'll need to make sure bash and git are both
 installed, but it should otherwise work.
 
 What platforms are supported?

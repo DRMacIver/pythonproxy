@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# This file is part of pythonproxy (https://github.com/DRMacIver/hypothesis)
+# This file is part of specipy (https://github.com/DRMacIver/specipy)
 #
 # Most of this work is copyright (C) 2015 David R. MacIver
 #
@@ -17,7 +17,7 @@ fi
 
 PYTHONVERSION=$1
 
-BASE=$HOME/.cache/pythonproxy
+BASE=$HOME/.cache/specipy
 LOCKFILE="$BASE/.install-lockfile"
 TARGETPYTHON=$BASE/versions/$PYTHONVERSION 
 EXECUTABLE=$TARGETPYTHON/bin/python
