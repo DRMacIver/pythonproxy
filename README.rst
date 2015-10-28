@@ -59,6 +59,11 @@ Ideally: Very carefully.
 In practice: Just stick specipy on your path somewhere. You'll need to make sure bash and git are both
 installed, but it should otherwise work.
 
+Why is it called specipy?
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Because `jonty <https://github.com/jonty>`_.
+
 What platforms are supported?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
